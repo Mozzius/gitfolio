@@ -38,12 +38,13 @@ module.exports.updateHTML = (username) => {
                 repos = JSON.parse(repos.body);
                 for(var i = 0;i < repos.length;i++){
                     if(repos[i].fork == false){
+                        var description = repos[i].description ? repos[i].description : '';
                         document.getElementById("projects").innerHTML += `
                         <a href="${repos[i].html_url}" target="_blank">
                         <section>
                             <div class="section_title">${repos[i].name}</div>
                             <div class="about_section">
-                            ${convertToEmoji(repos[i].description)}
+                            ${convertToEmoji(description)}
                             </div>
                             <div class="bottom_section">
                                 <span><i class="fas fa-code"></i>&nbsp; ${repos[i].language}</span>
